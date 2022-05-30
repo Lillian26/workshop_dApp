@@ -1,17 +1,17 @@
-If you are brand new to the cardano space and dev, start with the overview on the developers portal - the components
+If you are brand new to the cardano space and dev, start with the overview on the developers portal - the components.
 
 # COMPONENTS: 
 Here are 3 basic components you'll definitely use;
 
-Install cardano-node and cardano-cli( is a node js package, so you need node js on your system) because anything you do locally, will need you to run node runing whether testnet or mainnet
+Install cardano-node and cardano-cli( is a node js package, so you need node js on your system) because anything you do locally, will need you to run node runing whether testnet or mainnet.
 
-cardano-wallet - API that let's you do wallet transactions through http requests
+cardano-wallet - API that let's you do wallet transactions through http requests.
 
 # RESOURCES: 
 More from developer portal; 1) tools - check things you can use to integrate with your technology. 2) showcase, we can find existing similar apps created. 3) testnet - get testnet ada and developing. 4)  devblog - get latest info on the developer projects. 5) docs - old docs page 6) IOHK github page. - best most current info, important to always know the latest releases to keep your software updated. the number 1 page. 7) cardano stack exchange - a stackoverflow focused on only cardano, also has a reward system. 8) others; reddit, discord, social media.
 
 # Beginner friendly Explainer on building transactions:
- This reference is for anyone, developer or not, (even a baby can watch this) of structural things, how they work?
+ This reference is for anyone, developer or not,describing the structure of cardano transactions, how they work?
 
 ## NOTE:
 - Have a cardano node running in the background (can install Daedelus wallet for this), have a copy of the blockchain that it is synced up, so you can query info using cardano-cli and get updated info.
@@ -21,38 +21,40 @@ More from developer portal; 1) tools - check things you can use to integrate wit
 
 ### example query 1: status of blockchain
 
-results from the `cardano-cli query tip --mainnet` can be about epoch, blocks minted, current era and updates loading
+`cardano-cli query tip --mainnet` \
+The results from the command show; epoch, blocks minted, current cardano era and updates loading.
 
 - cardano-cli= powerful tool, low level, no abtraction so you see everything.
 
 ### example query 2: query utxo
 
-`cardano-cli query utxo` will show what other options you need to type to use that command ergo filters
+`cardano-cli query utxo` \
+This will show what other options you need to type to use that command ergo filters.
 
 ## Filters:
 
-specify requests, example;
+Filters help you to specify requests, example;
 
 ### example query 3: 
 
-`cardano-cli query utxo --mainnet --address $RECEIVER`
-returns all the utxos associated with that address, showing the lovelaces associated with it.
+`cardano-cli query utxo --mainnet --address $RECEIVER` \
+This command returns all the utxos associated with that address, showing the lovelaces associated with it.
 
-this information on the cardanoscan is represented as the ADA associated with an address, but the cardano cli goes into details about how that ADA balance is spread out over the number of utxos associated with that address. 
+This information on the cardanoscan is represented as the ADA associated with an address, but the cardano cli goes into details about how that ADA balance is spread out over the number of utxos associated with that address. 
 
 This is important because you need to find the uxto with sufficient ADA (from that wallet address) to be consumed in a tranasaction.
 
-Other information from the utxo query covers that native tokens in that wallet address aswell
+Other information from the utxo query covers that native tokens in that wallet address as well.
 
 ## Sending value:
 
-set variable $SENDER_KEY = "file path to a private key with ADA"
+Set a variable $SENDER_KEY = "file path to a private key with ADA"
 DO NOT STORE YOUR PRIVATE KEYS ON A NETWORKED COMPUTER!
-Will need to set up security for this using this [guide](#security)
+Will need to set up security for this using this [guide](./node_security)
 
 `cardano-cli query utxo --mainnet --address $SENDER`
 
-get input(s) - utxo(s) you require to send the transaction, and set variables for them to reference them later in the command.
+Result shown enables you to get input(s) - utxo(s) that you require to send the transaction, and set variables for them to reference them later in the command.
 
 ### Identifing a utxo:
 
@@ -68,7 +70,7 @@ Checklist:
 3. path to private key
 
 ### Step one: Draft transaction
-Create a draft transaction to be able to calculate fees
+Create a draft transaction to be able to calculate fees.
 
 transaction1:
 `cardano-cli transaction build-raw --tx-in $TxIN1 --tx-out $RECEIVER+0 --tx-out $SENDER+0 --invalid-hereafter 0 --fee 0 --out-file tx1.draft`
@@ -84,12 +86,12 @@ sometimes the command in documentation is split across several lines to look lik
 </code>
 
 Running the command should atleast output a protocol file containing protocol parameters \
-use `ls` command to check files in the directory
+use `ls` command to check files in the directory.
 
 transaction2:
 `cardano-cli transaction build-raw --tx-in $TxIN2A --tx-in $TxIN2B --tx-out $RECEIVER+0 --tx-out $SENDER+0 --invalid-hereafter 0 --fee 0 --out-file tx2.draft`
 
-visualising txt1.draft in a text editor: using `nano txt1.draft` command should show a json object containing type, description and cborHex values
+Visualising txt1.draft in a text editor: using `nano txt1.draft` command should show a json object containing type, description and cborHex values.
 
 To view more information encoded in the cborHex value: \
 `cardano-cli transaction view --tx-body-file tx1.draft`
@@ -98,13 +100,14 @@ To view more information encoded in the cborHex value: \
 Specify the count of the inputs, outputs, witnesses/signatures. \
 `cardano-cli transaction calculate-min-fee --tx-body-file tx1.draft --tx-in-count 1 --tx-out-count 2 --address-count 1 --mainnet --protocol-params-file protocol.json`
 
-- for multisig => more signature count
-- signing a transaction can happen offline? 
-- for plutus=> besides wallet addresses, we can have contract addresses. Contract addresses are automated scripts that can for example look at an oracle and determine if something is true, if it is, then sign the transaction.
+Note:
+- For multisig configuration, you'll need to set more signature count.
+- Signing a transaction can happen offline?! 
+- For plutus scripts we can tell that besides wallet addresses, we can have contract addresses. Contract addresses are automated scripts that can for example look at an oracle and determine if something is true, if it is, then sign the transaction.
 
 The command should output the number of lovelance required for this particular transaction.
 
-From often use of Daedelus, common fee noted for a transaction with one utxo in, two utxos out, is 0.176413 ADA. \
+From often use of Daedelus wallet, common fee noted for a transaction with one utxo in, two utxos out, is 0.176413 ADA. \
 Fees vary according to changes in:
 - number of inputs,
 - number of outputs,
@@ -133,13 +136,14 @@ It's a good thing wallets are able to calculate all this for us.
 Query the tip of the mainnet to get the slot number. \
 `cardano-cli query tip --mainnet`
 
-a slot = 1 sec, protocol parameter for now
+One slot = 1 sec, protocol parameter for now
 
-get a slot number to set an expiration time, for this example, we can just add 1000 slots. \ 
-So take into account finishing the building, submiting of these transactions within the next 15mins(<1000 slots)
+We need to get a slot number to be able to set an expiration time, for this example, we can just add 1000 slots. \ 
+So taking into account finishing the building, submiting of these transactions within the next 15mins(<1000 slots) we should set the expire variable to the current slot plus 1000.
 
 `EXPIRE="$calculated_expiration_time1"`
 
+This is important because: \
 We shouldn't keep potential transactions floating around way after thier expiration times.
 
 The concurrency issue - building and signing a transaction, and then having the parameters of the transaction disappear e.g used up by another transaction before it is submitted equals to failure. 
@@ -160,3 +164,4 @@ Running the command should atleast output the raw transaction file.
 ## References:
 - https://www.youtube.com/watch?v=XVHwWEbExOo
 - https://www.youtube.com/watch?v=AZXcrBx9dw4
+- https://developers.cardano.org/
