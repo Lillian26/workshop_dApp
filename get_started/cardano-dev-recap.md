@@ -8,9 +8,7 @@ Install cardano-node and cardano-cli( is a node js package, so you need node js 
 cardano-wallet - API that let's you do wallet transactions through http requests
 
 # RESOURCES: 
-More from developer portal; 1) tools - check things you can use to integrate with your technology. 2) showcase, we can find existing similar apps created. 3) testnet - get testnet ada and developing. 4)  devblog - get latest info on the developer projects. 5) docs - old docs page 6) IOHK github page. - best most current info, important to always know the latest releases to keep your software updated. the number 1 page. 7) cardano stack exchange - a stackoverflow focused on only cardano, also has a reward system. 8) others; reddit, discord, social media
-
-Ref: https://www.youtube.com/watch?v=AZXcrBx9dw4
+More from developer portal; 1) tools - check things you can use to integrate with your technology. 2) showcase, we can find existing similar apps created. 3) testnet - get testnet ada and developing. 4)  devblog - get latest info on the developer projects. 5) docs - old docs page 6) IOHK github page. - best most current info, important to always know the latest releases to keep your software updated. the number 1 page. 7) cardano stack exchange - a stackoverflow focused on only cardano, also has a reward system. 8) others; reddit, discord, social media.
 
 # Beginner friendly Explainer on building transactions:
  This reference is for anyone, developer or not, (even a baby can watch this) of structural things, how they work?
@@ -161,3 +159,4 @@ Running the command should atleast output the raw transaction file.
 
 ## References:
 - https://www.youtube.com/watch?v=XVHwWEbExOo
+- https://www.youtube.com/watch?v=AZXcrBx9dw4
