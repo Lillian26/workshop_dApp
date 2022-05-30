@@ -13,7 +13,7 @@ More from developer portal; 1) tools - check things you can use to integrate wit
 Ref: https://www.youtube.com/watch?v=AZXcrBx9dw4
 
 # Beginner friendly Explainer on building transactions:
- This reference is for anyone, developer or not, (even a baby can watch this) of structural things, how they work?: https://www.youtube.com/watch?v=XVHwWEbExOo
+ This reference is for anyone, developer or not, (even a baby can watch this) of structural things, how they work?
 
 ## NOTE:
 - Have a cardano node running in the background (can install Daedelus wallet for this), have a copy of the blockchain that it is synced up, so you can query info using cardano-cli and get updated info.
@@ -157,3 +157,7 @@ Set final variables; $SEND for ammount to be sent.
 Running the command should atleast output the raw transaction file.
 
 `cardano-cli transaction build-raw --tx-in $TxIN2A --tx-in $TxIN2B --tx-out $RECEIVER+$SEND --tx-out $SENDER+CHANGE2 --invalid-heresafter $EXPIRE --fee $FEE2 -out-file tx2.raw` 
+
+
+## References:
+- https://www.youtube.com/watch?v=XVHwWEbExOo
