@@ -13,7 +13,7 @@ More from developer portal; 1) tools - check things you can use to integrate wit
 # Beginner friendly Explainer on building transactions:
  This reference is for anyone, developer or not,describing the structure of cardano transactions, how they work?
 
-## NOTE:
+## Querying the blockchain using cardano-cli:
 - Have a cardano node running in the background (can install Daedelus wallet for this), have a copy of the blockchain that it is synced up, so you can query info using cardano-cli and get updated info.
 - set variables $SENDER, $RECEIVER (addresses to experiment with)
 - can also check them out on cardanoscan; get basic info; balance n txs
@@ -48,7 +48,7 @@ Other information from the utxo query covers that native tokens in that wallet a
 
 ## Sending value:
 
-Set a variable $SENDER_KEY = "file path to a private key with ADA"
+Set a variable $SENDER_KEY = "file path to a private key with ADA" \
 DO NOT STORE YOUR PRIVATE KEYS ON A NETWORKED COMPUTER!
 Will need to set up security for this using this [guide](./node_security)
 
