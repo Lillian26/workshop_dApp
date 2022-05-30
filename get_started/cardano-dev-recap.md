@@ -1,6 +1,6 @@
 If you are brand new to the cardano space and dev, start with the overview on the developers portal - the components.
 
-# COMPONENTS: 
+# CARDANO GUIDE: 
 Here are 3 basic components you'll definitely use;
 
 Install cardano-node and cardano-cli( is a node js package, so you need node js on your system) because anything you do locally, will need you to run node runing whether testnet or mainnet.
