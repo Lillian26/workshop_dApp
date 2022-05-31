@@ -75,15 +75,15 @@ Create a draft transaction to be able to calculate fees.
 transaction1:
 `cardano-cli transaction build-raw --tx-in $TxIN1 --tx-out $RECEIVER+0 --tx-out $SENDER+0 --invalid-hereafter 0 --fee 0 --out-file tx1.draft`
 
-sometimes the command in documentation is split across several lines to look like: \
-<code>cardano-cli transaction build-raw \
-  --tx-in $TxIN1 \
-  --tx-out $RECEIVER+0 \
-  --tx-out $SENDER+s+0 \
-  --invalid-hereafter 0 \
-  --fee 0 \
-  --out-file txt1.draft \
-</code>
+sometimes the command in documentation is split across several lines to look like: 
+<pre>cardano-cli transaction build-raw 
+  --tx-in $TxIN1 
+  --tx-out $RECEIVER+0 
+  --tx-out $SENDER+s+0 
+  --invalid-hereafter 0 
+  --fee 0 
+  --out-file txt1.draft 
+</pre>
 
 Running the command should atleast output a protocol file containing protocol parameters \
 use `ls` command to check files in the directory.
@@ -150,7 +150,7 @@ The concurrency issue - building and signing a transaction, and then having the 
 
 Having different uxtos from the same place being used by different people to submit transactions at the same time.
 
-### Step five: build the transaction(S)
+### Step five: build the transaction(s)
 
 Set final variables; $SEND for ammount to be sent.
 

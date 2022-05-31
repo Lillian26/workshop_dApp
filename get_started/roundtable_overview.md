@@ -83,6 +83,13 @@ This folder contains API routes, serverless functions e.g. hello.ts.
         - new.tsx
     - new.tsx
 
+### route.ts
+
+### styles
+
+### tapes 
+This folder contains examples
+
 ## List of libraries.
 The libraries to know and follow updates on. Here is a list of vital libraries for the dApp technology.
  - "@apollo/client": "^3.5.10",
@@ -105,5 +112,17 @@ The libraries to know and follow updates on. Here is a list of vital libraries f
 
 
 ### Test environment:
-set up node
+Minimal set up includes the first two items listed below: 
+
+1. set up node
 https://tutorials.cardanoacademy.io/cardano-cli-testnet/setting-up-cardano-node
+
+2. Alternatives Ogmios instead of Cardano-db-sync: https://ogmios.dev/faq/
+
+3. Auto-sync: This is another set up needed to be able to check if the other addresses of your treasury have already "signed" the proposed transaction.
+Generally check the status of a given transaction.
+
+How to use GUN for auto-sync ? \
+For now we might not need to have auto sync for first trial set up.
+
+If hosted Gun servers used go offline you can still just share the url and import signatures, copy and send the signatures via other channel like Discord or Email.
